@@ -1,0 +1,107 @@
+body {
+  text-align: none;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bolder 600px;
+  background: linear-gradient(
+    135deg,
+    rgb(255, 248, 134) 10%,
+    rgb(240, 114, 182) 100%
+  );
+}
+
+h2,
+h3 {
+  text-align: center;
+  text-decoration: underline;
+  font-family: "Varela Round", sans-serif;
+}
+
+h1 {
+  color: rgb(226, 65, 6);
+  text-align: center;
+  font-family: "Artifika", serif;
+  padding: 50px 50px 30px 50px;
+}
+
+h2 {
+  color: rgb(243, 124, 80);
+}
+
+h3 {
+  color: rgb(243, 124, 80);
+  padding: 10px 0 10px 0;
+}
+
+.location-button {
+  border-radius: 90px;
+  transition: all 20ms ease-in-out;
+  background-color: #f074b5;
+  border: #f074b5;
+}
+
+.location-button:hover {
+  cursor: pointer;
+  background-color: #f7b49f;
+}
+
+.weather-details {
+  color: blueviolet;
+  list-style: none;
+  text-align: right;
+  position: relative;
+}
+
+.unit:hover {
+  cursor: pointer;
+}
+
+.cloudy-sun {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.current-location {
+  color: salmon;
+  list-style: none;
+  text-align: right;
+  position: relative;
+}
+
+.compass-direction {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 10px;
+  position: relative;
+  left: 0px;
+}
+
+.weekdays {
+  color: blueviolet;
+  font-weight: bold;
+  list-style: none;
+  padding: 10px 0;
+  position: relative;
+  left: 70px;
+}
+
+.weekday-icons {
+  color: #f65282;
+  font-size: 45px;
+  position: relative;
+  left: 70px;
+  padding: 5px;
+}
+
+.temperature {
+  color: crimson;
+  position: relative;
+  left: 50px;
+}
+
+.designer {
+  text-align: center;
+  padding: 30px;
+}
