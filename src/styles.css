@@ -44,11 +44,27 @@ h3 {
   background-color: #f7b49f;
 }
 
+.current-button {
+  border-radius: 90px;
+  transition: all 20ms ease-in-out;
+  background-color: #f074b5;
+  border: #f074b5;
+}
+
+.current-button:hover {
+  cursor: pointer;
+  background-color: #f7b49f;
+}
+
 .weather-details {
   color: blueviolet;
   list-style: none;
   text-align: right;
   position: relative;
+}
+
+li:first-letter {
+  text-transform: capitalize;
 }
 
 .unit:hover {

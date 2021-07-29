@@ -59,6 +59,8 @@ function displayWeather(response) {
   let city = document.querySelector("#cityName");
   city.innerHTML = response.data.name;
 
+  celsiusTemperature = response.data.main.temp;
+
   let temperatureElement = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = `${temperature}`;
@@ -69,15 +71,15 @@ function displayWeather(response) {
 
   let feelsLikeElement = document.querySelector("#feels-like-temperature");
   let feelsLikeTemperature = Math.round(response.data.main.feels_like);
-  feelsLikeElement.innerHTML = `<strong> Feels Like</strong>: ${feelsLikeTemperature}˚F`;
+  feelsLikeElement.innerHTML = `<strong> Feels Like</strong>: ${feelsLikeTemperature}˚C`;
 
   let highTemperatureElement = document.querySelector("#high-temperature");
   let highTemperature = Math.round(response.data.main.temp_max);
-  highTemperatureElement.innerHTML = `<strong>Today's High</strong>:${highTemperature}˚F`;
+  highTemperatureElement.innerHTML = `<strong>Today's High</strong>:${highTemperature}˚C`;
 
   let lowTemperatureElement = document.querySelector("#low-temperature");
   let lowTemperature = Math.round(response.data.main.temp_min);
-  lowTemperatureElement.innerHTML = `<strong> Today's Low</strong>: ${lowTemperature}˚F`;
+  lowTemperatureElement.innerHTML = `<strong> Today's Low</strong>: ${lowTemperature}˚C`;
 
   let humidityElement = document.querySelector("#humidity");
   let humidity = response.data.main.humidity;
@@ -85,12 +87,12 @@ function displayWeather(response) {
 
   let windElement = document.querySelector("#wind");
   let wind = response.data.wind.speed;
-  windElement.innerHTML = `<strong>Wind Speed</strong>: ${wind}mph`;
+  windElement.innerHTML = `<strong>Wind Speed</strong>: ${wind}km/h`;
 }
 
 function searchCity(cityName) {
   let apiKey = "846acd27931c9d626c32650564c67fcf";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -116,21 +118,25 @@ function displayCurrentLocation(event) {
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", displayCurrentLocation);
 
-searchCity("Upland");
-
-function convertToCelsius(event) {
+function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = "<strong>40</strong>";
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
-let celsiuslink = document.querySelector("#celsius-link");
-celsiuslink.addEventListener("click", convertToCelsius);
 
-function convertToFahrenheit(event) {
+function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = "<strong>104</strong>";
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+let celsiusTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+searchCity("Upland");
