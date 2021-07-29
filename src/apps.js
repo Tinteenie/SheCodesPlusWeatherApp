@@ -71,15 +71,15 @@ function displayWeather(response) {
 
   let feelsLikeElement = document.querySelector("#feels-like-temperature");
   let feelsLikeTemperature = Math.round(response.data.main.feels_like);
-  feelsLikeElement.innerHTML = `<strong> Feels Like</strong>: ${feelsLikeTemperature}˚C`;
+  feelsLikeElement.innerHTML = `<strong> Feels like</strong>: ${feelsLikeTemperature}˚C`;
 
   let highTemperatureElement = document.querySelector("#high-temperature");
   let highTemperature = Math.round(response.data.main.temp_max);
-  highTemperatureElement.innerHTML = `<strong>Today's High</strong>:${highTemperature}˚C`;
+  highTemperatureElement.innerHTML = `<strong>High</strong>:${highTemperature}˚C`;
 
   let lowTemperatureElement = document.querySelector("#low-temperature");
   let lowTemperature = Math.round(response.data.main.temp_min);
-  lowTemperatureElement.innerHTML = `<strong> Today's Low</strong>: ${lowTemperature}˚C`;
+  lowTemperatureElement.innerHTML = `<strong> Low</strong>: ${lowTemperature}˚C`;
 
   let humidityElement = document.querySelector("#humidity");
   let humidity = response.data.main.humidity;
@@ -88,6 +88,14 @@ function displayWeather(response) {
   let windElement = document.querySelector("#wind");
   let wind = response.data.wind.speed;
   windElement.innerHTML = `<strong>Wind Speed</strong>: ${wind}km/h`;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(cityName) {
