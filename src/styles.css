@@ -61,7 +61,7 @@ h3 {
   list-style: none;
   text-align: right;
   position: relative;
-  bottom: 100px;
+  bottom: -20px;
 }
 
 li:first-letter {
@@ -72,8 +72,8 @@ li:first-letter {
   cursor: pointer;
 }
 
-.icon {
-  width: 100px;
+.cloudy-sun {
+  width: 135px;
   display: block;
   margin: 0 auto;
   padding-top: 10px;
