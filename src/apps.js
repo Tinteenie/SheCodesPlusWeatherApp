@@ -49,10 +49,10 @@ let currentDays = [
 let currentDay = currentDays[currentTime.getDay()];
 
 let todaysDate = document.querySelector("#current-day");
-todaysDate.innerHTML = `<strong>Today</strong>: ${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}`;
+todaysDate.innerHTML = `<strong>Last updated on</strong>: ${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}`;
 
 let todaysTime = document.querySelector("#current-time");
-todaysTime.innerHTML = `<strong>Time</strong>: ${currentHour}: ${currentMinute}: ${currentSecond}`;
+todaysTime.innerHTML = `<strong>Last updated at</strong>: ${currentHour}: ${currentMinute}: ${currentSecond}`;
 
 function displayWeather(response) {
   console.log(response.data);
