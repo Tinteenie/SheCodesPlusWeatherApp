@@ -37,6 +37,8 @@ h3 {
   transition: all 20ms ease-in-out;
   background-color: #f074b5;
   border: #f074b5;
+  display: block;
+  margin: 0 auto;
 }
 
 .location-button:hover {
@@ -49,6 +51,8 @@ h3 {
   transition: all 20ms ease-in-out;
   background-color: #f074b5;
   border: #f074b5;
+  display: block;
+  margin: 0 auto;
 }
 
 .current-button:hover {
