@@ -87,7 +87,7 @@ function displayWeather(response) {
 
   let windElement = document.querySelector("#wind");
   let wind = response.data.wind.speed;
-  windElement.innerHTML = `<strong>Wind Speed</strong>: ${wind}km/h`;
+  windElement.innerHTML = `<strong>Wind Speed</strong>: ${wind} m/s`;
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -148,3 +148,34 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("Upland");
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+              <div class="col-2">
+                <div class="date-forecast">${day}</div>
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                  alt=""
+                  class="forecast-weather-icon"
+                />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-max">19˚</span>
+                  <span class="weather-forecast-min">12˚</span>
+                </div>
+              </div>    
+            `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
