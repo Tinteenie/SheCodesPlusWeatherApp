@@ -139,6 +139,9 @@ li:first-letter {
   color: #f65282;
   text-align: center;
   margin-bottom: 10px;
+}
+
+.forecast-description:first-letter {
   text-transform: capitalize;
 }
 
