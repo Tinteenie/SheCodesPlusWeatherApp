@@ -57,7 +57,7 @@ todaysTime.innerHTML = `<strong>Last updated at</strong>: ${currentHour}: ${curr
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "846acd27931c9d626c32650564c67fcf";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
@@ -67,7 +67,7 @@ function displayWeather(response) {
   let city = document.querySelector("#cityName");
   city.innerHTML = response.data.name;
 
-  celsiusTemperature = response.data.main.temp;
+  fahrenheitTemperature = response.data.main.temp;
 
   let temperatureElement = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
@@ -79,15 +79,15 @@ function displayWeather(response) {
 
   let feelsLikeElement = document.querySelector("#feels-like-temperature");
   let feelsLikeTemperature = Math.round(response.data.main.feels_like);
-  feelsLikeElement.innerHTML = `<strong> Feels like</strong>: ${feelsLikeTemperature}˚C`;
+  feelsLikeElement.innerHTML = `<strong> Feels like</strong>: ${feelsLikeTemperature}˚F`;
 
   let highTemperatureElement = document.querySelector("#high-temperature");
   let highTemperature = Math.round(response.data.main.temp_max);
-  highTemperatureElement.innerHTML = `<strong>High</strong>:${highTemperature}˚C`;
+  highTemperatureElement.innerHTML = `<strong>High</strong>:${highTemperature}˚F`;
 
   let lowTemperatureElement = document.querySelector("#low-temperature");
   let lowTemperature = Math.round(response.data.main.temp_min);
-  lowTemperatureElement.innerHTML = `<strong> Low</strong>: ${lowTemperature}˚C`;
+  lowTemperatureElement.innerHTML = `<strong> Low</strong>: ${lowTemperature}˚F`;
 
   let humidityElement = document.querySelector("#humidity");
   let humidity = response.data.main.humidity;
@@ -95,7 +95,7 @@ function displayWeather(response) {
 
   let windElement = document.querySelector("#wind");
   let wind = response.data.wind.speed;
-  windElement.innerHTML = `<strong>Wind Speed</strong>: ${wind} m/s`;
+  windElement.innerHTML = `<strong>Wind Speed</strong>: ${wind} mph`;
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -110,7 +110,7 @@ function displayWeather(response) {
 
 function searchCity(cityName) {
   let apiKey = "846acd27931c9d626c32650564c67fcf";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -139,17 +139,17 @@ currentLocationButton.addEventListener("click", displayCurrentLocation);
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
+  let celsiusTemperature = (5 / 9) * (fahrenheitTemperature - 32);
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-let celsiusTemperature = null;
+let fahrenheitTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
@@ -169,7 +169,7 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -189,6 +189,10 @@ function displayForecast(response) {
                   alt=""
                   class="forecast-weather-icon"
                 />
+                <div class="forecast-description">
+                ${forecastDay.weather[0].description}
+                
+                </div>
                 <div class="weather-forecast-temperature">
                   <span class="weather-forecast-max">${Math.round(
                     forecastDay.temp.max
