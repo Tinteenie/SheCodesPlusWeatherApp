@@ -122,6 +122,33 @@ li:first-letter {
   left: 50px;
 }
 
+.date-forecast {
+  text-align: center;
+  color: #f65282;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.forecast-weather-icon {
+  width: 60px;
+  text-align: center;
+  margin: 20px 50px;
+}
+
+.weather-forecast-temperature {
+  font-size: 18px;
+  text-align: center;
+  color: #f65282;
+}
+
+.weather-forecast-max {
+  font-weight: bold;
+}
+
+weather-forecast-min {
+  font-weight: none;
+}
+
 .designer {
   text-align: center;
   padding: 30px;
