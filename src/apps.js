@@ -117,10 +117,19 @@ function searchCity(cityName) {
 function handleSearch(event) {
   event.preventDefault();
   let cityName = document.querySelector("#location-input").value;
-  search(cityName);
+  searchCity(cityName);
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSearch);
+
+function displaySearchLocationWeather(event) {
+  event.preventDefault;
+  let cityName = document.querySelector("#location-input").value;
+  searchCity(cityName);
+}
+
+let searchLocationButton = document.querySelector("#search-button");
+searchLocationButton.addEventListener("click", displaySearchLocationWeather);
 
 function searchLocation(position) {
   let apiKey = "846acd27931c9d626c32650564c67fcf";
