@@ -116,8 +116,8 @@ function searchCity(cityName) {
 
 function handleSearch(event) {
   event.preventDefault();
-  let cityName = document.querySelector("#location-input");
-  cityName.innerHTML = cityName.value;
+  let cityName = document.querySelector("#location-input").value;
+  search(cityName);
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSearch);
