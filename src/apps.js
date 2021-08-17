@@ -114,13 +114,13 @@ function searchCity(cityName) {
   axios.get(apiUrl).then(displayWeather);
 }
 
-function handleSearch(event) {
+function search(event) {
   event.preventDefault();
-  let cityName = document.querySelector("#location-input").value;
-  searchCity(cityName);
+  let cityName = document.querySelector("#location-input");
+  cityName.innerHTML = cityName.value;
 }
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSearch);
+searchForm.addEventListener("submit", search);
 
 function searchLocation(position) {
   let apiKey = "846acd27931c9d626c32650564c67fcf";
